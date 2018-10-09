@@ -4,10 +4,14 @@ import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '../material/';
 
+import { AppComponent } from './containers/app.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+
 
 
 export const COMPONENTS = [
-
+    AppComponent,
+    SidenavComponent,
 ];
 
 @NgModule({

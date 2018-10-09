@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,12 +17,28 @@ import { CoreModule } from './core/core.module';
 
 import { environment } from '../environments/environment';
 
+import { reducers } from './store/reducers';
+
+
 
 @NgModule({
   declarations: [
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    StoreModule.forRoot(reducers),
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'router',
+    }),
+    StoreDevtoolsModule.instrument({
+      name: 'Crypto NgRx Devtools',
+      logOnly: environment.production,
+    }),
+    EffectsModule.forRoot([]),
+    CoreModule,
   ],
   providers: [],
   bootstrap: []

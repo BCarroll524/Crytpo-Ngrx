@@ -13,6 +13,7 @@ import { CoinsRoutingModule } from './coins-routing.module';
 import * as fromContainers from './containers';
 // components
 import * as fromComponents from './components';
+import { CoinDetailComponent } from './containers/coin-detail/coin-detail.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import * as fromComponents from './components';
     StoreModule.forFeature('coins', reducers),
     EffectsModule.forFeature(effects),
   ],
-  declarations: [...fromContainers.containers, ...fromComponents.components],
+  declarations: [...fromContainers.containers, ...fromComponents.components, CoinDetailComponent],
   exports: [...fromContainers.containers, ...fromComponents.components],
 })
 export class CoinsModule { }

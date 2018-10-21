@@ -30,7 +30,8 @@ export function reducer(
         case fromCoins.LOAD_ALL_COINS: {
             return {
                 ...state,
-                loading: true
+                loading: true,
+                error: undefined
             };
         }
 
@@ -48,7 +49,9 @@ export function reducer(
             const coinsData = action.payload.data;
             return {
                 ...state,
-                loaded: true
+                coinsEntities: coinsData,
+                loaded: true,
+                loading: false
             };
         }
 

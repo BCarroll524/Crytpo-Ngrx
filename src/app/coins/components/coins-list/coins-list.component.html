@@ -1,0 +1,50 @@
+<div class="filter-wrapper">
+  <mat-form-field>
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+<div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+    <ng-container matColumnDef="rank">
+        <th mat-header-cell fxFlex="75px" *matHeaderCellDef mat-sort-header> Rank </th>
+        <td mat-cell fxFlex="75px" *matCellDef="let coin"> {{coin.rank}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell fxFlex="175px" *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell fxFlex="175px" *matCellDef="let coin"> {{coin.name}} ({{coin.symbol}})</td>
+    </ng-container>
+
+    <ng-container matColumnDef="marketCap">
+        <th mat-header-cell fxFlex="175px" *matHeaderCellDef mat-sort-header> Market Cap </th>
+        <td mat-cell fxFlex="175px" *matCellDef="let coin"> ${{ coin.quotes['USD'].market_cap }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+        <th mat-header-cell fxFlex="175px" *matHeaderCellDef mat-sort-header> Price </th>
+        <td mat-cell fxFlex="175px" *matCellDef="let coin"> ${{ coin.quotes['USD'].price }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="volume">
+        <th mat-header-cell fxFlex="175px" *matHeaderCellDef mat-sort-header> Volume (24h) </th>
+        <td mat-cell fxFlex="175px" *matCellDef="let coin"> ${{ coin.quotes['USD'].volume_24h }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="supply">
+        <th mat-header-cell fxFlex="150px" *matHeaderCellDef mat-sort-header> Circulating Supply </th>
+        <td mat-cell fxFlex="150px" *matCellDef="let coin"> ${{coin.total_supply}} {{ coin.symbol }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="change">
+        <th mat-header-cell fxFlex="125px" *matHeaderCellDef mat-sort-header> Change (24h) </th>
+        <td mat-cell fxFlex="125px" *matCellDef="let coin">
+             {{coin.quotes['USD'].percent_change_24h}} % </td>
+    </ng-container>
+        
+    <mat-header-row line-height="60px" *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row line-height="30px" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</table>
+
+<mat-paginator [pageSize]="25" [pageSizeOptions]="[25,50,100,250]"></mat-paginator>
+</div>

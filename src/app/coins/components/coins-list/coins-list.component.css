@@ -1,0 +1,39 @@
+table {
+    width: 100%;
+
+    /*
+        We need to set the margin of the table in order to center it on screen.
+        margin: 0 auto is shorthand for the following:
+        margin-top: 0;
+        margin-right: auto;
+        margin-bottom: 0;
+        margin-left: auto;
+    */
+    margin: 0 auto;
+}
+
+.mat-cell,
+.mat-header-cell {
+    flex: 0 0 13%;
+    /* Remove the bottom border in the table row. */
+    border-bottom: none;
+}
+
+.mat-header-cell {
+    font-weight: bold;
+    font-size: 12pt;
+    color: black;
+}
+
+
+.positive-change {
+    color: green;
+}
+
+.negative-change {
+    color: red;
+}
+
+.neutral {
+    color: blue;
+}

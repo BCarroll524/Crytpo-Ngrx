@@ -20,6 +20,10 @@ import { reducers } from './store/reducers';
 import { AppComponent } from './core/containers/app.component';
 
 
+// Routing
+import { AppRoutingModule } from './app-routing.module';
+
+
 
 @NgModule({
   declarations: [],
@@ -28,6 +32,7 @@ import { AppComponent } from './core/containers/app.component';
     CommonModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    AppRoutingModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       name: 'Crypto NgRx Devtools',

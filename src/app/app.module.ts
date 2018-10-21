@@ -18,12 +18,13 @@ import { reducers } from './store/reducers';
 
 // App Component
 import { AppComponent } from './core/containers/app.component';
+import { ComponentsComponent } from './app/core/components/components.component';
 
 
 
 @NgModule({
   declarations: [
-  ],
+  ComponentsComponent],
   imports: [
     BrowserModule,
     CommonModule,

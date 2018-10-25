@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit, Input } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
 import { Coin } from '../../model/coin';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 
@@ -9,6 +9,7 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 })
 export class CoinsListComponent implements AfterViewInit {
   @Input() dataSource: MatTableDataSource<Coin>;
+  @Output() clicked: EventEmitter<number> = new EventEmitter<number>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -32,6 +33,12 @@ export class CoinsListComponent implements AfterViewInit {
 
   doFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  rowClicked(coin: Coin) {
+    // handle event click
+    console.log('Event Emitted with coin id ' + coin.name);
+    this.clicked.emit(coin.id);
   }
 
 }

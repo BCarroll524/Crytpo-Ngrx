@@ -1,6 +1,6 @@
 // start with importing the actions
 import * as fromCoinDetail from '../actions/coin-detail.action';
-import { stat } from 'fs';
+
 
 // TO DO
 // Come back and add models / update

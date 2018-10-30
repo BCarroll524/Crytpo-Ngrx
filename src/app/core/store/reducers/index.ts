@@ -1,1 +1,1 @@
-export * from '../actions/layout.action';
+export * from './layout.reducer';

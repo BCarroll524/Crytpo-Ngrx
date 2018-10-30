@@ -1,3 +1,4 @@
-export * from '../reducers/layout.reducer';
+export * from './layout.action';
+
 
 

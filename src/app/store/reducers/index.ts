@@ -4,6 +4,12 @@ import {
     createFeatureSelector,
     ActionReducer
   } from '@ngrx/store';
+  import {
+    ActivatedRouteSnapshot,
+    RouterStateSnapshot,
+    Params,
+  } from '@angular/router';
+
   import { environment } from '../../../environments/environment';
   import * as fromRouter from '@ngrx/router-store';
 
@@ -23,13 +29,20 @@ import {
 
   import * as fromLayout from '../../core/store/reducers/layout.reducer';
 
+  // Router State
+  export interface RouterStateUrl {
+    url: string;
+    queryParams: Params;
+    params: Params;
+  }
+
   /**
    * As mentioned, we treat each reducer like a table in a database. This means
    * our top level state interface is just a map of keys to inner state types.
    */
   export interface State {
     layout: fromLayout.LayoutState;
-    router: fromRouter.RouterReducerState;
+    router: fromRouter.RouterReducerState<RouterStateUrl>;
   }
 
   /**
@@ -63,3 +76,10 @@ import {
     getLayoutState,
     fromLayout.getShowSidenav
   );
+
+    /**
+   * Router Selectors
+   */
+  export const getRouterState = createFeatureSelector<State, fromRouter.RouterReducerState<RouterStateUrl>>('router');
+
+

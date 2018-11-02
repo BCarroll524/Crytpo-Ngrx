@@ -6,6 +6,7 @@ import { of } from 'rxjs/internal/observable/of';
 
 import * as coinDetailActions from '../actions/coin-detail.action';
 import * as fromServices from '../../../core/services/crypto.service';
+import * as fromRoot from '../../../store';
 
 @Injectable()
 export class CoinDetailEffects {
@@ -27,17 +28,12 @@ export class CoinDetailEffects {
         catchError(error => of(new coinDetailActions.LoadCoinFailed(error)))
     );
 
-    // @Effect()
-    // loadCoin$ = this.actions$.ofType(coinDetailActions.LOAD_COIN),
-    //     map(action => action.payload),
-    //     .pipe(
-    //         switchMap((action) => {
-    //             return this.cryptoService.getCoin(action.payload.id).pipe(
-    //                 map(coins => new coinsActions.LoadAllCoinsSuccess(coins)),
-    //                 catchError(error => of(new coinsActions.LoadAllCoinsFailed(error)))
-    //             );
-    //         })
-    //     );
-
+    @Effect()
+    loadCoinSuccess$ = this.actions$.pipe(
+        ofType<coinDetailActions.LoadCoinSuccess>(coinDetailActions.LOAD_COIN_SUCCESS),
+        map(() => {
+            return new from
+        })
+    )
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Effect, Actions } from '@ngrx/effects';
+import { Effect, Actions, ofType } from '@ngrx/effects';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 
@@ -26,6 +26,19 @@ export class CoinDetailEffects {
     //             );
     //         })
     //     );
+
+    @Effect()
+    getUser$ = this.actions$.pipe(
+        ofType<coinDetailActions.LoadCoin>(coinDetailActions.LOAD_COIN),
+        map(action => action.payload),
+        switchMap(id => this.cryptoService.getCoin(id)),
+        map(res => {
+            console.log('res::', res);
+
+            return new coinDetailActions.LoadCoinSuccess(res);
+        }),
+        catchError(error => of(new coinDetailActions.LoadCoinFailed(error)))
+    );
 
 
 }

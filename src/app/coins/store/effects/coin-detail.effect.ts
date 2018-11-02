@@ -15,6 +15,18 @@ export class CoinDetailEffects {
         // need model for coin api
     ) {}
 
+    @Effect()
+    loadCoin$ = this.actions$.pipe(
+        ofType<coinDetailActions.LoadCoin>(coinDetailActions.LOAD_COIN),
+        map(action => action.payload),
+        switchMap(id => this.cryptoService.getCoin(id)),
+        map(res => {
+            console.log('res:: ' + res);
+            return new coinDetailActions.LoadCoinSuccess(res);
+        }),
+        catchError(error => of(new coinDetailActions.LoadCoinFailed(error)))
+    );
+
     // @Effect()
     // loadCoin$ = this.actions$.ofType(coinDetailActions.LOAD_COIN),
     //     map(action => action.payload),
@@ -26,19 +38,6 @@ export class CoinDetailEffects {
     //             );
     //         })
     //     );
-
-    @Effect()
-    getUser$ = this.actions$.pipe(
-        ofType<coinDetailActions.LoadCoin>(coinDetailActions.LOAD_COIN),
-        map(action => action.payload),
-        switchMap(id => this.cryptoService.getCoin(id)),
-        map(res => {
-            console.log('res::', res);
-
-            return new coinDetailActions.LoadCoinSuccess(res);
-        }),
-        catchError(error => of(new coinDetailActions.LoadCoinFailed(error)))
-    );
 
 
 }

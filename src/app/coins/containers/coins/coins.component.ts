@@ -37,6 +37,7 @@ export class CoinsComponent implements OnInit {
 
   goToCoinDetail(id: number): void {
     this.store.dispatch(new fromStore.LoadCoin(id));
+    console.log(this.store.select(fromStore.getSelectedCoin));
   }
 
 }

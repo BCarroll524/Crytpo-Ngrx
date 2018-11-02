@@ -14,11 +14,7 @@ import { Coin } from '../../coins/model/coin';
 export class CryptoService {
   endpoints = [
     'https://api.coinmarketcap.com/v2/ticker/?limit=100&sort=rank&',
-    'https://api.coinmarketcap.com/v2/ticker/?limit=10&sort=percent_change_24h&structure=array',
     'https://api.coinmarketcap.com/v2/ticker/',
-    'https://rest.coinapi.io/v1/symbols?filter_symbol_id=',
-    'https://rest.coinapi.io/v1/quotes/',
-    'https://api.coinmarketcap.com/v2/listings/'
   ];
 
   constructor (
@@ -31,6 +27,15 @@ export class CryptoService {
         .pipe(
             catchError((error: any) => Observable.throw(error.json()))
         );
+  }
+
+  getCoin(id: number): Observable<CryptoRequest> {
+    const endpoint = this.endpoints[1] + id;
+    return this.http
+      .get<CryptoRequest>(endpoint)
+      .pipe(
+          catchError((error: any) => Observable.throw(error.json()))
+      );
   }
 
 }

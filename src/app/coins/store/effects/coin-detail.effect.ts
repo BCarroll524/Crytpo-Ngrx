@@ -19,7 +19,6 @@ export class CoinDetailEffects {
     // loadCoin$ = this.actions$.ofType(coinDetailActions.LOAD_COIN),
     //     map(action => action.payload),
     //     .pipe(
-    //         map( action: this.actions$.Load),
     //         switchMap((action) => {
     //             return this.cryptoService.getCoin(action.payload.id).pipe(
     //                 map(coins => new coinsActions.LoadAllCoinsSuccess(coins)),

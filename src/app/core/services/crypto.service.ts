@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 // models
-import { CryptoRequest } from 'src/app/core/models/crypto-request';
+import { CryptoRequest, CryptoRequestSingle } from 'src/app/core/models/crypto-request';
 import { Coin } from '../../coins/model/coin';
 
 
@@ -13,7 +13,7 @@ import { Coin } from '../../coins/model/coin';
 })
 export class CryptoService {
   endpoints = [
-    'https://api.coinmarketcap.com/v2/ticker/?limit=100&sort=rank&',
+    'https://api.coinmarketcap.com/v2/ticker/?limit=100&sort=rank',
     'https://api.coinmarketcap.com/v2/ticker/',
   ];
 
@@ -29,10 +29,10 @@ export class CryptoService {
         );
   }
 
-  getCoin(id: number): Observable<CryptoRequest> {
+  getCoin(id: number): Observable<CryptoRequestSingle> {
     const endpoint = this.endpoints[1] + id;
     return this.http
-      .get<CryptoRequest>(endpoint)
+      .get<CryptoRequestSingle>(endpoint)
       .pipe(
           catchError((error: any) => Observable.throw(error.json()))
       );

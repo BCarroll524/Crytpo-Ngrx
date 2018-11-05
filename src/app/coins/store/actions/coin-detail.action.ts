@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 
 // models
-import { CryptoRequest } from '../../../core/models/crypto-request';
+import { CryptoRequest, CryptoRequestSingle } from '../../../core/models/crypto-request';
 import { Coin } from '../../model/coin';
 
 export const LOAD_COIN = '[Coin Detail] Load Coin';
@@ -15,7 +15,7 @@ export class LoadCoin implements Action {
 
 export class LoadCoinSuccess implements Action {
     readonly type = LOAD_COIN_SUCCESS;
-    constructor(public payload: CryptoRequest) {}
+    constructor(public payload: CryptoRequestSingle) {}
 }
 
 export class LoadCoinFailed implements Action {

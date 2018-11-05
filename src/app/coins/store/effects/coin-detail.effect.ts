@@ -31,9 +31,12 @@ export class CoinDetailEffects {
     @Effect()
     loadCoinSuccess$ = this.actions$.pipe(
         ofType<coinDetailActions.LoadCoinSuccess>(coinDetailActions.LOAD_COIN_SUCCESS),
-        map(() => {
-            return new from
+        map((action) => {
+            const id = action.payload.data.id;
+            return new fromRoot.Go({
+                path: [`/coin/${id}`]
+            });
         })
-    )
+    );
 
 }

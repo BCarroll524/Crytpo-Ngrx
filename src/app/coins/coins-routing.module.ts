@@ -9,6 +9,10 @@ const routes: Routes = [
         path: '',
         component: fromContainers.CoinsComponent
     },
+    {
+        path: 'coin/:id',
+        component: fromContainers.CoinDetailComponent
+    }
 ];
 
 @NgModule({

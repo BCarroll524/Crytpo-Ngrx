@@ -15,7 +15,7 @@ export class LoadCoin implements Action {
 
 export class LoadCoinSuccess implements Action {
     readonly type = LOAD_COIN_SUCCESS;
-    constructor(public payload: any/* payload of model */) {}
+    constructor(public payload: CryptoRequest) {}
 }
 
 export class LoadCoinFailed implements Action {

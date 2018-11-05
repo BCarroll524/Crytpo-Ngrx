@@ -22,6 +22,7 @@ import { AppComponent } from './core/containers/app.component';
 
 // Routing
 import { AppRoutingModule } from './app-routing.module';
+import { effects } from './store';
 
 
 
@@ -38,7 +39,7 @@ import { AppRoutingModule } from './app-routing.module';
       name: 'Crypto NgRx Devtools',
       logOnly: environment.production,
     }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot(effects),
     CoreModule,
   ],
   providers: [],

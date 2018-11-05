@@ -13,7 +13,6 @@ export class CoinDetailEffects {
     constructor(
         private actions$: Actions,
         private cryptoService: fromServices.CryptoService
-        // need model for coin api
     ) {}
 
     @Effect()
@@ -34,7 +33,7 @@ export class CoinDetailEffects {
         map((action) => {
             const id = action.payload.data.id;
             return new fromRoot.Go({
-                path: [`/coin/${id}`]
+                path: ['/coin', id]
             });
         })
     );

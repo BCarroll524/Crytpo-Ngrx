@@ -18,6 +18,6 @@ export const reducers: ActionReducerMap<CoinState> = {
 
 // creates base level of state object
 // a const which holds a selector for entire lazy loaded module
-// 'coins' comes fromt he string set in the module
+// 'coins' comes from the string set in the module
 export const getCoinsState = createFeatureSelector<CoinState>('coins');
 

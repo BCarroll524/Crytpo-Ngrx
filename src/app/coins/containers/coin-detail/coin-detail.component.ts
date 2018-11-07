@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { map } from 'rxjs/operators'
 
 // Store
 import { Store } from '@ngrx/store';
@@ -18,14 +19,15 @@ import { Coin } from '../../model/coin';
   styleUrls: ['./coin-detail.component.css']
 })
 export class CoinDetailComponent implements OnInit {
-  coin$: Coin;
+  coin$: Observable<Coin>;
 
   constructor(
     private store: Store<fromStore.CoinState>
   ) { }
 
   ngOnInit() {
-    console.log(this.store.select(fromStore.getSelectedCoinData))
+    this.coin$ = this.store.select(fromStore.getSelectedCoinData);
+    console.log(this.coin$);
   }
 
 }

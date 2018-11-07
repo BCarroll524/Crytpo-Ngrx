@@ -33,7 +33,7 @@ export class CoinDetailEffects {
         map((action) => {
             const id = action.payload.data.id;
             return new fromRoot.Go({
-                path: ['/coin', id]
+                path: ['coins/', id]
             });
         })
     );

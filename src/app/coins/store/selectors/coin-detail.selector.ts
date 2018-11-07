@@ -6,15 +6,25 @@ import * as fromFeature from '../reducers';
 // Import individual reducers
 import * as fromCoinDetail from '../reducers/coin-detail.reducer';
 
+// coin state slice
 export const getSelectedCoinStateSlice = createSelector(
     fromFeature.getCoinsState,
     (state: fromFeature.CoinState) => state.selectedCoin
 
 );
 
-export const getSelectedCoin = createSelector(
+// coin data slice
+export const getSelectedCoinData = createSelector(
     getSelectedCoinStateSlice,
     fromCoinDetail.getCoinData
+);
+
+// coin data actual
+export const getCoin = createSelector(
+    getSelectedCoinData,
+    (coin) => {
+        return coin;
+    }
 );
 
 export const getSelectedCoinLoaded = createSelector(

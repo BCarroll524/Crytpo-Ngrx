@@ -1,16 +1,14 @@
 // start with importing the actions
 import * as fromCoinDetail from '../actions/coin-detail.action';
 
-
-// TO DO
-// Come back and add models / update
-
+// import coin interface
+import { Coin } from '../../model/coin';
 
 // define an interface first that will be the state
 
 export interface CoinDetailState {
     // dictionary of all coins
-    data: any;
+    data: Coin;
     error: string;
     loaded: boolean;
     loading: boolean;
@@ -55,7 +53,7 @@ export function reducer(
             const coinData = action.payload;
             return {
                 ...state,
-                data: coinData,
+                data: coinData.data,
                 loaded: true,
                 loading: false
             };

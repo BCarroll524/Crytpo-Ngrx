@@ -3,7 +3,6 @@ import { ActionReducerMap, createFeatureSelector } from '@ngrx/store';
 // reducer
 import * as fromCoins from './coins.reducer';
 import * as fromCoinDetail from './coin-detail.reducer';
-import { CoinDetailAction } from 'src/app/coins/store';
 
 // define the state
 export interface CoinState {

@@ -10,7 +10,7 @@ const routes: Routes = [
         component: fromContainers.CoinsComponent
     },
     {
-        path: 'coin/:id',
+        path: ':id',
         component: fromContainers.CoinDetailComponent
     }
 ];

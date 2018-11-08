@@ -19,15 +19,19 @@ import { Coin } from '../../model/coin';
   styleUrls: ['./coin-detail.component.css']
 })
 export class CoinDetailComponent implements OnInit {
-  coin$: Observable<Coin>;
+  coin$: Coin;
 
   constructor(
     private store: Store<fromStore.CoinState>
   ) { }
 
   ngOnInit() {
-    this.coin$ = this.store.select(fromStore.getSelectedCoinData);
-    console.log(this.coin$);
+    this.store.select(fromStore.getSelectedCoinData).subscribe(
+      (coin: Coin) => {
+        this.coin$ = coin;
+      }
+    );
+    console.log(this.coin$.quotes.USD.price);
   }
 
 }

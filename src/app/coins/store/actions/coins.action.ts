@@ -2,7 +2,6 @@ import { Action } from '@ngrx/store';
 
 // models
 import { CryptoRequest } from '../../../core/models/crypto-request';
-import { Coin } from '../../model/coin';
 
 export const LOAD_ALL_COINS = '[Coins] Load All Coins';
 export const LOAD_ALL_COINS_SUCCESS = '[Coins] Load All Coins Success';

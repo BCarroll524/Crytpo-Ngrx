@@ -32,7 +32,7 @@ export class CoinsComponent implements OnInit {
       (coins: Coin[]) => {
         this.dataSource$.data = coins;
       }
-    );
+    );    
   }
 
   goToCoinDetail(id: number): void {
